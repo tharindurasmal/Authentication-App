@@ -25,4 +25,14 @@ class AuthServices{
     }
     
   }
+
+  //sign out
+  Future signOut() async{
+    try{
+      return await _auth.signOut();
+    }catch(err){
+      print(err.toString());
+      return null;
+    }
+  }
 }

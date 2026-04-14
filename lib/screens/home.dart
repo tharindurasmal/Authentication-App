@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_and_firebase/services/auth.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,6 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +17,11 @@ class _HomeState extends State<Home> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Home"),
+          actions: [ElevatedButton(onPressed: () async {
+            await _auth.signOut();
+          }, child: const Icon(Icons.logout)
+          )
+          ],
         ),
         body: Center(
           child: Text("Welcome to Home Page"),
